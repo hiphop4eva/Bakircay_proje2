@@ -1,4 +1,4 @@
-from Personel import *
+from Classes.Personel import *
 
 class Doktor(Personel):
     def __init__(self, personel_no, ad, soyad, departman = "", maas = 0, uzmanlik = "", deneyim_yili = 0, hastane = "") -> None:

@@ -1,4 +1,4 @@
-from Personel import *
+from Classes.Personel import *
 
 class Hemsire(Personel):
     def __init__(self, personel_no, ad, soyad, departman = "", maas = 0, calisma_saati = 0, sertifika = "", hastane = "") -> None:
