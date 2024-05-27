@@ -58,7 +58,7 @@ doctorList = [
         "Maas":         9000,
         "Uzmanlik":     "Cerrahi",
         "Deneyim Yili": 6,
-        "Hastane":      "Hastane 1",
+        "Hastane":      "Hastane 3",
     }),
 
     Series({
@@ -147,7 +147,7 @@ rowCount = mainDataFrame.shape[0]
 uzmanlikDict = {}
 experiencedCount = 0
 nameList = []
-oldList = []
+youngList = []
 
 for i in range(rowCount):
     instance = mainDataFrame.iloc[i]
@@ -156,7 +156,7 @@ for i in range(rowCount):
     name = instance["Ad"]
     sickness = instance["Hastalik"]
     salary = instance["Maas"]
-    birthDate = instance["Dogum Tarihi"]
+    birthDate = str(instance["Dogum Tarihi"])
 
     if uzmanlik != 0:
         if uzmanlik not in uzmanlikDict:
@@ -170,6 +170,9 @@ for i in range(rowCount):
     if name not in nameList and sickness != 0:
         nameList.append(name)
 
+    if birthDate.split("/")[0] > "1990" and sickness != 0:
+        youngList.append(i)
+
 nameList.sort()
 
 print(f"Uzmanlık alanları ve üye sayısı: {uzmanlikDict}")
@@ -182,6 +185,10 @@ for name in nameList:
 print("----------------------------------------------------------------------------------------------------------------------------------------------")
 print("Maaşı 7000 üzerinde olan personeller:")
 print(mainDataFrame.loc[mainDataFrame["Maas"] > 7000])
+print("----------------------------------------------------------------------------------------------------------------------------------------------")
+print("1990'dan sonra doğan hastalar:")
+for i in youngList:
+    print(mainDataFrame.iloc[i])
 print("----------------------------------------------------------------------------------------------------------------------------------------------")
 print("Yeni kayıtlar:")
 print(newDataFrame)
